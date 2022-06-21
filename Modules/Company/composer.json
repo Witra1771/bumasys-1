@@ -1,0 +1,23 @@
+{
+    "name": "bumasys/company",
+    "description": "",
+    "authors": [
+        {
+            "name": "Bumi Code",
+            "email": "bumicode@yahoo.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Company\\": ""
+        }
+    }
+}
