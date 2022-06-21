@@ -32,6 +32,7 @@ return new class extends Migration
             $table->boolean('company_active')->default(1);
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
