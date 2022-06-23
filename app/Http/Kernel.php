@@ -65,7 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
 
-    protected $middlewarePriority = [
-        \App\Http\Middleware\TeamsPermission::class,
-    ];
+//    protected $middlewarePriority = [
+//        \App\Http\Middleware\TeamsPermission::class,
+//    ];
 }
