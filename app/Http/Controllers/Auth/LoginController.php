@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+    protected $maxAttempts = 3;
+    protected $decayMinutes = 2;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -37,4 +39,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
 }

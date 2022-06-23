@@ -31,7 +31,9 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    @foreach (language()->allowed() as $code => $name)
+                        <a href="{{ language()->back($code) }}">{{ language()->flag($code) }}{{ $name }}</a> &nbsp;
+                    @endforeach
                     <ul class="navbar-nav me-auto">
 
                     </ul>

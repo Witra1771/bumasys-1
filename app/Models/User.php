@@ -9,11 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
 
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, AuthenticationLoggable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, AuthenticationLoggable, \OwenIt\Auditing\Auditable;
     /**
      * The attributes that are mass assignable.
      *
