@@ -10,11 +10,13 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 use OwenIt\Auditing\Contracts\Auditable;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 
-class User extends Authenticatable implements MustVerifyEmail, Auditable
+class User extends Authenticatable implements MustVerifyEmail, Auditable, BannableContract
 {
 
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, AuthenticationLoggable, \OwenIt\Auditing\Auditable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, AuthenticationLoggable, \OwenIt\Auditing\Auditable, Bannable;
     /**
      * The attributes that are mass assignable.
      *

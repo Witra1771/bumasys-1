@@ -1,5 +1,10 @@
 {
     "Crm": true,
     "Hrm": true,
-    "Finance": true
+    "Finance": true,
+    "Item": true,
+    "Sales": true,
+    "Invoice": true,
+    "Bill": true,
+    "Inventory": true
 }
