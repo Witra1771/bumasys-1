@@ -8,8 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    protected $maxAttempts = 3;
-    protected $decayMinutes = 2;
+    protected int $maxAttempts = 3;
+    protected int $decayMinutes = 2;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected string $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
