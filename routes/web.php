@@ -27,3 +27,5 @@ Route::group(['middleware' => 'language'], function () {
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
+Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
