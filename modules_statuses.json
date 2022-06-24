@@ -6,5 +6,6 @@
     "Sales": true,
     "Invoice": true,
     "Bill": true,
-    "Inventory": true
+    "Inventory": true,
+    "ImportExport": true
 }
