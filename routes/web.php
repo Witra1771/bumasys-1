@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Web\Common\ComponentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use UniSharp\LaravelFilemanager\Lfm;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,12 @@ Route::group(['middleware' => 'language'], function () {
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
+    Lfm::routes();
 });
 
-Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::prefix('component')->group(callback: function(){
+    Route::get('province', [ComponentController::class, 'provinces'])->name('component.provinces');
+    Route::get('province/{provinceId}/city/', [ComponentController::class, 'cities'])->name('component.cities');
+    Route::get('province/{provinceId}/city/{cityId}/district/', [ComponentController::class, 'districts'])->name('component.districts');
+    Route::get('province/{provinceId}/city/{cityId}/district/{districtName}', [ComponentController::class, 'subDistricts'])->name('component.subDistricts');
+});
