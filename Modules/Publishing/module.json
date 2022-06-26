@@ -1,0 +1,13 @@
+{
+    "name": "Publishing",
+    "alias": "publishing",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Publishing\\Providers\\PublishingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
