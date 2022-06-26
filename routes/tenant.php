@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -23,7 +25,17 @@ Route::middleware([
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
-    Route::get('/', function () {
-        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+//    Route::get('/', function () {
+//        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+//    });
+
+    Route::group(['middleware' => 'language'], function () {
+        Route::get('/', function () {
+            return view('welcome');
+        });
+
+        Auth::routes(['verify' => true]);
+
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
     });
 });
