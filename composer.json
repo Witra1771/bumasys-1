@@ -9,6 +9,7 @@
         "akaunting/laravel-language": "^1.0",
         "artesaos/seotools": "^0.22.0",
         "brainstud/file-vault": "^2.0",
+        "cknow/laravel-money": "^7.0",
         "codedge/laravel-selfupdater": "^3.4",
         "cviebrock/eloquent-sluggable": "^9.0",
         "cybercog/laravel-ban": "^4.7",

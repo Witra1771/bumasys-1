@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('contact_groups', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('company_id')->unsigned();
+            $table->bigInteger('company_id');
             $table->string('name');
             $table->text('description');
-            $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();
         });
     }
