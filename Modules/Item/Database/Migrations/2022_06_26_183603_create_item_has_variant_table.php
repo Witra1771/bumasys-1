@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contact_groups', function (Blueprint $table) {
+        Schema::create('item_has_variants', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('company_id');
-            $table->string('name');
-            $table->text('description');
+            $table->bigInteger('item_id');
+            $table->bigInteger('item_variant_id');
+            $table->json('possible_value');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_groups');
+        Schema::dropIfExists('item_has_variant');
     }
 };

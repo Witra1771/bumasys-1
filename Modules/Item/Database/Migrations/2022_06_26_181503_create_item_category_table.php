@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contact_groups', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('company_id');
-            $table->string('name');
-            $table->text('description');
-            $table->timestamps();
+        Schema::create('item_has_categories', function (Blueprint $table) {
+            $table->bigInteger('category_id');
+            $table->string('model');
+            $table->bigInteger('item_id');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_groups');
+        Schema::dropIfExists('item_has_categories');
     }
 };

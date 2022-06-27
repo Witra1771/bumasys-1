@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contact_groups', function (Blueprint $table) {
+        Schema::create('item_pricings', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('company_id');
-            $table->string('name');
-            $table->text('description');
+            $table->bigInteger('item_id');
+            $table->integer('price'); // Harga Jual Konsumen
+            $table->json('price_levels')->nullable(); // Harga Jual ke Partner
+            $table->enum('price_is', ['inc. tax', 'exc. tax']);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_groups');
+        Schema::dropIfExists('item_pricings');
     }
 };

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->bigInteger('company_id')->unsigned();
+            $table->bigInteger('user_id')->nullable();
+            $table->bigInteger('company_id');
             $table->boolean('is_can_login')->default(false);
             $table->boolean('is_active')->default(true);
             $table->boolean('is_verified')->default(false);
@@ -35,8 +35,6 @@ return new class extends Migration
             $table->text('address');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
