@@ -9,6 +9,8 @@
 - [PostgreSQL](https://www.postgresql.org/) => ^13.0
 - [Composer](https://getcomposer.org/download/) => ^2.0
 - [Redis](https://redis.io/download/) => ^7.0
+- [NodeJS](https://nodejs.org/en/) => ^16.0
+> For testing can use [Laragon](https://laragon.org/)
 
 ### Developing
 
