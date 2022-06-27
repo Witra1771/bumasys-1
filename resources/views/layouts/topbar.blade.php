@@ -149,89 +149,91 @@
                         </form>
                     </div>
                 </div>
-
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @switch(Session::get('lang'))
-                        @case('ru')
-                            <img src="{{ URL::asset('/assets/images/flags/russia.svg') }}" class=" rounded" alt="Header Language"
-                                height="20">
-                        @break
-                        @case('it')
-                            <img src="{{ URL::asset('/assets/images/flags/italy.svg') }}" class=" rounded" alt="Header Language"
-                                height="20">
-                        @break
-                        @case('sp')
-                            <img src="{{ URL::asset('/assets/images/flags/spain.svg') }}" class=" rounded" alt="Header Language"
-                                height="20">
-                        @break
-                        @case('ch')
-                            <img src="{{ URL::asset('/assets/images/flags/china.svg') }}" class=" rounded" alt="Header Language"
-                                height="20">
-                        @break
-                        @case('fr')
-                            <img src="{{ URL::asset('/assets/images/flags/french.svg') }}" class=" rounded" alt="Header Language"
-                                height="20">
-                        @break
-                        @case('gr')
-                            <img src="{{ URL::asset('/assets/images/flags/germany.svg') }}" class=" rounded" alt="Header Language"
-                                height="20">
-                        @break
-                        @default
-                            <img src="{{ URL::asset('/assets/images/flags/us.svg') }}" class=" rounded" alt="Header Language" height="20">
-                    @endswitch
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @switch(Auth::user()->locale)
+                            @case('en')
+                            <img src="{{ URL::asset('flags/us.png') }}" class=" rounded" alt="Header Language"
+                                 width="20" height="20">
+                            @break
+                            @default
+                            <img src="{{ URL::asset('flags/'. Auth::user()->locale .'.png') }}" class=" rounded" alt="Header Language" width="20" height="20">
+                        @endswitch
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
+                        @foreach (language()->allowed() as $code => $name)
+{{--                            <a href="{{ language()->back($code) }}">{{ language()->flag($code) }}{{ $name }}</a> &nbsp;--}}
+                            <!-- item-->
+                            <a href="{{ language()->back($code) }}" class="dropdown-item notify-item language py-2" data-lang="en"
+                               title="{{ $name }}">
+                                {{ language()->flag($code) }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
 
-                        <!-- item-->
-                        <a href="{{ url('index/en') }}" class="dropdown-item notify-item language py-2" data-lang="en"
-                            title="English">
-                            <img src="{{ URL::asset('assets/images/flags/us.svg') }}" alt="user-image" class="me-2 rounded" height="20">
-                            <span class="align-middle">English</span>
-                        </a>
+                <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class='bx bx-add-to-queue fs-22'></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg p-0 dropdown-menu-end">
+                        <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="m-0 fw-semibold fs-15"> Make a New Awesome </h6>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="#!" class="btn btn-sm btn-soft-info"> View All Apps
+                                        <i class="ri-arrow-right-s-line align-middle"></i></a>
+                                </div>
+                            </div>
+                        </div>
 
-                        <!-- item-->
-                        <a href="{{ url('index/sp') }}" class="dropdown-item notify-item language" data-lang="sp"
-                            title="Spanish">
-                            <img src="{{ URL::asset('assets/images/flags/spain.svg') }}" alt="user-image" class="me-2 rounded" height="20">
-                            <span class="align-middle">Española</span>
-                        </a>
+                        <div class="p-2">
+                            <div class="row g-0">
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#!">
+                                        <img src="{{ URL::asset('assets/images/brands/github.png') }}" alt="Github">
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#!">
+                                        <img src="{{ URL::asset('assets/images/brands/bitbucket.png') }}" alt="bitbucket">
+                                        <span>Bitbucket</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#!">
+                                        <img src="{{ URL::asset('assets/images/brands/dribbble.png') }}" alt="dribbble">
+                                        <span>Dribbble</span>
+                                    </a>
+                                </div>
+                            </div>
 
-                        <!-- item-->
-                        <a href="{{ url('index/gr') }}" class="dropdown-item notify-item language" data-lang="gr"
-                            title="German">
-                            <img src="{{ URL::asset('assets/images/flags/germany.svg') }}" alt="user-image" class="me-2 rounded"
-                                height="20"> <span class="align-middle">Deutsche</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="{{ url('index/it') }}" class="dropdown-item notify-item language" data-lang="it"
-                            title="Italian">
-                            <img src="{{ URL::asset('assets/images/flags/italy.svg') }}" alt="user-image" class="me-2 rounded" height="20">
-                            <span class="align-middle">Italiana</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="{{ url('index/ru') }}" class="dropdown-item notify-item language" data-lang="ru"
-                            title="Russian">
-                            <img src="{{ URL::asset('assets/images/flags/russia.svg') }}" alt="user-image" class="me-2 rounded" height="20">
-                            <span class="align-middle">русский</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="{{ url('index/ch') }}" class="dropdown-item notify-item language" data-lang="ch"
-                            title="Chinese">
-                            <img src="{{ URL::asset('assets/images/flags/china.svg') }}" alt="user-image" class="me-2 rounded" height="20">
-                            <span class="align-middle">中国人</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="{{ url('index/fr') }}" class="dropdown-item notify-item language" data-lang="fr"
-                            title="French">
-                            <img src="{{ URL::asset('assets/images/flags/french.svg') }}" alt="user-image" class="me-2 rounded" height="20">
-                            <span class="align-middle">français</span>
-                        </a>
+                            <div class="row g-0">
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#!">
+                                        <img src="{{ URL::asset('assets/images/brands/dropbox.png') }}" alt="dropbox">
+                                        <span>Dropbox</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#!">
+                                        <img src="{{ URL::asset('assets/images/brands/mail_chimp.png') }}" alt="mail_chimp">
+                                        <span>Mail Chimp</span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="dropdown-icon-item" href="#!">
+                                        <img src="{{ URL::asset('assets/images/brands/slack.png') }}" alt="slack">
+                                        <span>Slack</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -795,7 +797,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome Anna!</h6>
+                        <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
                         <a class="dropdown-item" href="pages-profile"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('company_settings', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('company_id')->unsigned();
+            $table->bigInteger('company_id');
             $table->enum('date_format', ['mm/dd/yy', 'dd/mm/yy', 'mm-dd-yy', 'dd-mm-yy'])->default('dd/mm/yy');
             $table->enum('time_format', ['24 hour', '12 hour'])->default('24 hour');
             $table->string('time_zone')->default('Asia/Jakarta');
@@ -31,7 +31,6 @@ return new class extends Migration
             $table->json('payment_format')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

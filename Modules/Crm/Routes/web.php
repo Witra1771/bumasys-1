@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Crm\Http\Controllers\CompanyController;
+use Modules\Crm\Http\Controllers\CrmController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('crm')->group(function() {
-    Route::get('/', 'CrmController@index');
+    Route::prefix('company')->group(function() {
+        Route::get('/', [CompanyController::class, 'index']);
+    });
+
+    Route::get('/', [CrmController::class, 'index']);
 });
