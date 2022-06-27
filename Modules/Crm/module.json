@@ -5,7 +5,8 @@
     "keywords": [],
     "priority": 0,
     "providers": [
-        "Modules\\Crm\\Providers\\CrmServiceProvider"
+        "Modules\\Crm\\Providers\\CrmServiceProvider",
+        "Modules\\Crm\\Providers\\EventServiceProvider"
     ],
     "aliases": {},
     "files": [],
