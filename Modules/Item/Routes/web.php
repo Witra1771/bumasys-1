@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\Item\Http\Controllers\ItemController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +13,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::prefix('item')->group(function() {
-    Route::get('/', 'ItemController@index');
+    Route::get('/', [ItemController::class, 'index']);
 });
