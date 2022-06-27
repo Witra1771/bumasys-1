@@ -1460,17 +1460,19 @@
     <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
 
     <script>
-        var now = new Date();
-        var hrs = now.getHours();
-        var name = '{!! Auth::user()->name !!}';
-        var msg = "";
+        function greetings() {
+            var now = new Date();
+            var hrs = now.getHours();
+            var name = "{!! Auth::user()->name !!}";
+            var msg = "";
 
-        if (hrs >  6) msg = "Good Morning";      // After 6am
-        if (hrs > 12) msg = "Good Afternoon";    // After 12pm
-        if (hrs > 5) msg = "Good Evening";    // After 5pm
-        if (hrs > 20) msg = "Good Night";      // After 8pm
+            if (hrs >  6) msg = "{!! __('greeting.good_morning') !!}";      // After 6am
+            if (hrs > 12) msg = "{!! __('greeting.good_afternoon') !!}";    // After 12pm
+            if (hrs > 5) msg = "{!! __('greeting.good_evening') !!}";    // After 5pm
+            if (hrs > 20) msg = "{!! __('greeting.good_night') !!}";      // After 8pm
 
-        document.getElementById('greetings').innerHTML =
-            '<b>' + msg +', '+ name + '</b>';
+            document.getElementById('greetings').innerHTML =
+                '<b>' + msg +', '+ name + '</b>';
+        }
     </script>
 @endsection
