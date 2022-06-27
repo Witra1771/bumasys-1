@@ -7,7 +7,8 @@
 - Web Server => Nginx / Apache
 - [PHP](https://php.net/) => ^8.0
 - [PostgreSQL](https://www.postgresql.org/) => ^13.0
-- Composer => ^2.0
+- [Composer](https://getcomposer.org/download/) => ^2.0
+- [Redis](https://redis.io/download/) => ^7.0
 
 ### Developing
 
