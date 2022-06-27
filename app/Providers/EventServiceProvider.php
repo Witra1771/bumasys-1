@@ -6,6 +6,14 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Modules\Crm\Entities\Company;
+use Modules\Crm\Entities\CompanySetting;
+use Modules\Crm\Entities\Contact;
+use Modules\Crm\Entities\ContactGroup;
+use Modules\Crm\Observers\CompanyObserver;
+use Modules\Crm\Observers\CompanySettingObserver;
+use Modules\Crm\Observers\ContactGroupObserver;
+use Modules\Crm\Observers\ContactObserver;
 use Modules\Item\Entities\Item;
 use Modules\Item\Entities\ItemBrand;
 use Modules\Item\Entities\ItemHasCategory;
@@ -47,6 +55,10 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Company::observe(CompanyObserver::class);
+        CompanySetting::observe(CompanySettingObserver::class);
+        Contact::observe(ContactObserver::class);
+        ContactGroup::observe(ContactGroupObserver::class);
         Item::observe(ItemObserver::class);
         ItemBrand::observe(ItemBrandObserver::class);
         ItemUnit::observe(ItemUnitObserver::class);
