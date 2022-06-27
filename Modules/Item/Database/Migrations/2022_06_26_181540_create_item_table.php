@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('company_id');
             $table->bigInteger('item_brand_id');
-            $table->bigInteger('item_category_id');
             $table->bigInteger('item_warranty_id');
             $table->string('slug');
             $table->string('name');

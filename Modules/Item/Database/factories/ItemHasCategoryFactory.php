@@ -4,14 +4,14 @@ namespace Modules\Item\Database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ItemCategoryFactory extends Factory
+class ItemHasCategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = \Modules\Item\Entities\ItemCategory::class;
+    protected $model = \Modules\Item\Entities\ItemHasCategory::class;
 
     /**
      * Define the model's default state.

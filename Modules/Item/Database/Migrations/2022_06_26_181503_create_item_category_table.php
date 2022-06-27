@@ -13,17 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('item_categories', function (Blueprint $table) {
-            $table->id();
-            $table->boolean('is_system')->default(false);
-            $table->bigInteger('company_id');
-            $table->string('slug');
-            $table->string('name');
-            $table->text('image_path')->nullable();
-            $table->text('description')->nullable();
-            $table->integer('parent')->default(0);
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('item_has_categories', function (Blueprint $table) {
+            $table->bigInteger('category_id');
+            $table->string('model');
+            $table->bigInteger('item_id');
         });
     }
 
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_category');
+        Schema::dropIfExists('item_has_categories');
     }
 };

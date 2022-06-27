@@ -4,6 +4,7 @@ namespace Modules\Item\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Item extends Model
 {
@@ -14,7 +15,6 @@ class Item extends Model
     protected $fillable = [
         'company_id',
         'item_brand_id',
-        'item_category_id',
         'item_warranty_id',
         'slug',
         'name',
@@ -34,5 +34,13 @@ class Item extends Model
     protected static function newFactory()
     {
         return \Modules\Item\Database\factories\ItemFactory::new();
+    }
+
+    /**
+     * Get the user's category.
+     */
+    public function category(): MorphOne
+    {
+        return $this->morphOne(ItemHasCategory::class, 'category');
     }
 }
