@@ -1,5 +1,8 @@
 # BUMASYS
- 
+## Feature
+- [x] Modular
+- [x] Multi-Tenant
+
 ## Getting Started
 
 ### Prerequisites
